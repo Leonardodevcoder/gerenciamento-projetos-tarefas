@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+<h:head>
+    <title>Tarefas</title>
+</h:head>
+<h:body>
+    <h:form>
+        <rich:panel>
+            <rich:panel columns="2">
+                <h:outputLabel for="projeto" value="Projeto:"/>
+                <h:selectOneMenu id="projeto" value="#{tarefaController.projetoId}" required="true">
+                    <f:selectItems value="#{tarefaController.projetos}" var="projeto"
+                                   itemValue="#{projeto.id}" itemLabel="#{projeto.titulo}"/>
+                </h:selectOneMenu>
+                <a4j:commandButton value="Carregar Tarefas" action="#{tarefaController.listarTarefasPorProjeto}"/>
+            </rich:panel>
+        </rich:panel>
+
+        <rich:dataTable value="#{tarefaController.tarefas}" var="tarefa" rows="10">
+            <rich:column>
+                <f:facet name="header">ID</f:facet>
+                #{tarefa.id}
+            </rich:column>
+            <rich:column>
+                <f:facet name="header">Título</f:facet>
+                #{tarefa.titulo}
+            </rich:column>
+            <rich:column>
+                <f:facet name="header">Ações</f:facet>
+                <a4j:commandButton value="Detalhes" action="/WEB-INF/tarefa/tarefaDetalhes.xhtml">
+                    <f:setPropertyActionListener target="#{tarefaController.tarefaDTO}" value="#{tarefa}"/>
+                </a4j:commandButton>
+                <a4j:commandButton value="Editar" action="/WEB-INF/tarefa/editarTarefa.xhtml">
+                    <f:setPropertyActionListener target="#{tarefaController.tarefaDTO}" value="#{tarefa}"/>
+                </a4j:commandButton>
+                <a4j:commandButton value="Excluir" action="#{tarefaController.excluir(tarefa.id)}"/>
+            </rich:column>
+        </rich:dataTable>
+        <a4j:commandButton value="Nova Tarefa" action="/WEB-INF/tarefa/editarTarefa.xhtml"/>
+    </h:form>
+</h:body>
+</html>

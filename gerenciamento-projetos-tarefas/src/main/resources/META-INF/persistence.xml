@@ -1,0 +1,12 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+    <persistence-unit name="gerenciamentoPU">
+        <jta-data-source>java:jboss/datasources/gerenciamentoDS</jta-data-source>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.jdbc.time_zone" value="America/Sao_Paulo" /> 
+        </properties>
+    </persistence-unit>
+</persistence>

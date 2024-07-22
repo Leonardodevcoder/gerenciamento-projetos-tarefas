@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                                  http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+              version="2.3">
+
+    <application>
+        <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+    </application>
+
+    <!-- Managed Beans -->
+    <managed-bean>
+        <managed-bean-name>projetoController</managed-bean-name>
+        <managed-bean-class>controller.ProjetoController</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>tarefaController</managed-bean-name>
+        <managed-bean-class>controller.TarefaController</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Navigation Rules -->
+    <navigation-rule>
+        <from-view-id>/projeto/projetos.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>projetoDetalhes</from-outcome>
+            <to-view-id>/WEB-INF/projeto/projetoDetalhes.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>editarProjeto</from-outcome>
+            <to-view-id>/WEB-INF/projeto/editarProjeto.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/tarefa/tarefas.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>tarefaDetalhes</from-outcome>
+            <to-view-id>/WEB-INF/tarefa/tarefaDetalhes.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>editarTarefa</from-outcome>
+            <to-view-id>/WEB-INF/tarefa/editarTarefa.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>
